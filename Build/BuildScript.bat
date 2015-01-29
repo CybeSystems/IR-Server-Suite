@@ -35,12 +35,13 @@ echo.
 echo.
 echo Removing old binaries...
 RMDir /S /Q ..\bin\%BUILD_TYPE% >> %LOG%
-if not %ERRORLEVEL%==0 EXIT
+echo %ERRORLEVEL%
+if %ERRORLEVEL% GTR 1 GOTO END
 
 
 echo.
 echo Writing GIT revision assemblies...
-%DeployVersionGIT% /git="%GIT_ROOT%" /path="%GIT_ROOT%\IR Server Suite" >> %log%
+REM %DeployVersionGIT% /git="%GIT_ROOT%" /path="%GIT_ROOT%\IR Server Suite" >> %log%
 
 echo.
 echo Copying BuildReport resources...
@@ -48,6 +49,9 @@ xcopy /I /Y .\BuildReport\_BuildReport_Files .\_BuildReport_Files >> %log%
 
 echo.
 echo Building IR Server Suite...
+rem "%ProgramDir%\Microsoft Visual Studio 10.0\Common7\IDE\devenv.com" /rebuild %BUILD_TYPE% "..\IR Server Suite\IR Server Suite.sln" >> %LOG%
+"%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBUILD.exe" /target:Rebuild /property:Configuration=%BUILD_TYPE%;Platform="x86";AllowUnsafeBlocks=true "..\IR Server Suite\IR Server Suite.sln" >> %LOG%
+if not %ERRORLEVEL%==0 GOTO END
 
 set xml=Build_Report_%BUILD_TYPE%_IRServer.xml
 set html=Build_Report_%BUILD_TYPE%_IRServer.html
@@ -59,6 +63,9 @@ BuildReport\msxsl %xml% _BuildReport_Files\BuildReport.xslt -o %html%
 if not %2!==MPplugins! goto NoMPplugins
 echo.
 echo Building MediaPortal plugins...
+"%ProgramDir%\Microsoft Visual Studio 10.0\Common7\IDE\devenv.com" /rebuild %BUILD_TYPE% "..\MediaPortal Plugins\MediaPortal plugins.sln" >> %LOG%
+rem "%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBUILD.exe" /target:Rebuild /property:Configuration=%BUILD_TYPE%;Platform=x86 "..\MediaPortal Plugins\MediaPortal plugins.sln" >> %LOG%
+if not %ERRORLEVEL%==0 GOTO END
 RmDir "..\IR Server Suite\Common\IrssCommands\obj" /s /q
 RmDir "..\IR Server Suite\Common\IrssComms\obj" /s /q
 RmDir "..\IR Server Suite\Common\IrssUtils\obj" /s /q
@@ -69,21 +76,20 @@ set logger=/l:XmlFileLogger,"BuildReport\MSBuild.ExtensionPack.Loggers.dll";logf
 
 "%WINDIR%\Microsoft.NET\Framework\v4.0.30319\MSBUILD.exe" %logger% /target:Rebuild /property:Configuration=%BUILD_TYPE%;Platform=x86 "..\MediaPortal Plugins\MediaPortal plugins.sln"
 BuildReport\msxsl %xml% _BuildReport_Files\BuildReport.xslt -o %html%
-
 :NoMPplugins
 
 
 echo.
 echo Reverting assemblies...
-%DeployVersionGIT% /git="%GIT_ROOT%" /path="%GIT_ROOT%\IR Server Suite" /revert >> %log%
+REM %DeployVersionGIT% /git="%GIT_ROOT%" /path="%GIT_ROOT%\IR Server Suite" /revert >> %log%
 
 echo.
 echo Reading the git revision...
-%DeployVersionGIT% /git="%GIT_ROOT%" /path="%GIT_ROOT%\IR Server Suite" /GetVersion >> %log%
+REM %DeployVersionGIT% /git="%GIT_ROOT%" /path="%GIT_ROOT%\IR Server Suite" /GetVersion >> %log%
 rem SET /p version=<version.txt >> build.log
 SET version=%errorlevel%
 DEL version.txt >> %LOG%
-
+SET version=90
 
 echo.
 if not %2!==MPplugins! goto NoMPplugins
