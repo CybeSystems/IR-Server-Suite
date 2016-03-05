@@ -64,8 +64,8 @@ namespace Commands
 
       if (fileDir.StartsWith(Common.FolderIRCommands, StringComparison.OrdinalIgnoreCase))
         fileDir = fileDir.Substring(Common.FolderIRCommands.Length);
-      else if (fileDir.StartsWith(Common.FolderAppData, StringComparison.OrdinalIgnoreCase))
-        fileDir = fileDir.Substring(Common.FolderAppData.Length);
+      else if (fileDir.StartsWith(AppDomain.CurrentDomain.BaseDirectory, StringComparison.OrdinalIgnoreCase))
+        fileDir = fileDir.Substring(AppDomain.CurrentDomain.BaseDirectory.Length);
 
       return String.Format("{0} ({1}, {2})", GetUserInterfaceText(), Path.Combine(fileDir, fileName), Parameters[1]);
     }

@@ -44,12 +44,12 @@ namespace MediaCenterBlaster
   {
     #region Constants
 
-    private static readonly string ConfigurationFile = Path.Combine(Common.FolderAppData,
+    private static readonly string ConfigurationFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                                                     "Media Center Blaster\\Media Center Blaster.xml");
 
-    internal static readonly string FolderMacros = Path.Combine(Common.FolderAppData, "Media Center Blaster\\Macro");
+    internal static readonly string FolderMacros = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Media Center Blaster\\Macro");
 
-    internal static readonly string ExtCfgFolder = Path.Combine(Common.FolderAppData, "Media Center Blaster");
+    internal static readonly string ExtCfgFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Media Center Blaster");
 
     private const string ProcessCommandThreadName = "ProcessCommand";
 

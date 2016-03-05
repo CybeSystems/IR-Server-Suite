@@ -40,7 +40,7 @@ namespace IRServer.Plugin
     /// Plugin configuration file base path.
     /// </summary>
     public static readonly string ConfigurationPath =
-      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+      Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                    Path.Combine("IR Server Suite", "IR Server"));
 
     #endregion Constants

@@ -86,8 +86,8 @@ namespace Commands
       string macroName = Path.Combine(macroPath, macroFile);
       if (macroName.StartsWith(_macroFolder, StringComparison.OrdinalIgnoreCase))
         macroName = macroName.Substring(_macroFolder.Length);
-      if (macroName.StartsWith(Common.FolderAppData, StringComparison.OrdinalIgnoreCase))
-        macroName = macroName.Substring(Common.FolderAppData.Length);
+      if (macroName.StartsWith(AppDomain.CurrentDomain.BaseDirectory, StringComparison.OrdinalIgnoreCase))
+        macroName = macroName.Substring(AppDomain.CurrentDomain.BaseDirectory.Length);
 
       textBoxName.Text = macroName;
       textBoxName.Enabled = false;

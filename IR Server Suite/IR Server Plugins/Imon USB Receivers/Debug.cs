@@ -18,7 +18,7 @@ namespace IRServer.Plugin
             if (_debugFile != null) return;
             try
             {
-                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                            String.Format("IR Server Suite\\Logs\\{0}", fileName));
                 _debugFile = new StreamWriter(path, false);
                 _debugFile.AutoFlush = true;

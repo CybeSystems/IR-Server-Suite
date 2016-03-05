@@ -62,10 +62,10 @@ namespace Commands
 
       string fileName = Path.GetFileNameWithoutExtension(Parameters[0]);
 
-      if (fileDir.StartsWith(Common.FolderAppData, StringComparison.OrdinalIgnoreCase))
-        fileDir = fileDir.Substring(Common.FolderAppData.Length);
-      else if (fileDir.StartsWith(Common.FolderAppData, StringComparison.OrdinalIgnoreCase))
-        fileDir = fileDir.Substring(Common.FolderAppData.Length);
+      if (fileDir.StartsWith(AppDomain.CurrentDomain.BaseDirectory, StringComparison.OrdinalIgnoreCase))
+        fileDir = fileDir.Substring(AppDomain.CurrentDomain.BaseDirectory.Length);
+      else if (fileDir.StartsWith(AppDomain.CurrentDomain.BaseDirectory, StringComparison.OrdinalIgnoreCase))
+        fileDir = fileDir.Substring(AppDomain.CurrentDomain.BaseDirectory.Length);
 
       return String.Format("{0} ({1})", GetUserInterfaceText(), Path.Combine(fileDir, fileName));
     }

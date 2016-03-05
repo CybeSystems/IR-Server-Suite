@@ -61,7 +61,7 @@ namespace IrssUtils.Forms
         private bool _editionEnabled;
         private bool _insertionEnabled;
         private bool _MacroNameValid;
-        internal static readonly string FolderMacros = Path.Combine(Common.FolderAppData, "Translator\\Macro");
+        internal static readonly string FolderMacros = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Translator\\Macro");
 
         #endregion attributes
 

@@ -40,7 +40,7 @@ namespace KeyboardInputRelay
   {
     #region Constants
 
-    private static readonly string ConfigurationFolder = Path.Combine(Common.FolderAppData,
+    private static readonly string ConfigurationFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                                                     "Keyboard Input Relay");
     private static readonly string ConfigurationFile = Path.Combine(ConfigurationFolder,
                                                                     "Keyboard Input Relay.xml");

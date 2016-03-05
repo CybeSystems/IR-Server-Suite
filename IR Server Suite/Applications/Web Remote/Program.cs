@@ -49,7 +49,7 @@ namespace WebRemote
     private const string DefaultSkin = "MCE";
     private const int DefaultWebPort = 2481;
 
-    private static readonly string ConfigurationFolder = Path.Combine(Common.FolderAppData,
+    private static readonly string ConfigurationFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                                                     "Virtual Remote");
     private static readonly string ConfigurationFile = Path.Combine(ConfigurationFolder,
                                                                     "Web Remote.xml");

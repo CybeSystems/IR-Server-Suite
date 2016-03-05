@@ -39,7 +39,7 @@ namespace IRServer.Plugin
     #region Constants
 
     private static readonly string ConfigurationFile =
-      Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) +
+      AppDomain.CurrentDomain.BaseDirectory +
       "\\IR Server Suite\\IR Server\\Speech Receiver.xml";
 
     #endregion Constants

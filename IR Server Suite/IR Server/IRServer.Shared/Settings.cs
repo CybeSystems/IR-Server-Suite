@@ -14,7 +14,7 @@ namespace IRServer
     /// <summary>
     /// Contains the full path to the XML-file, where the settings are saved.
     /// </summary>
-    private static readonly string ConfigurationFile = Path.Combine(Common.FolderAppData, @"IR Server\IR Server.xml");
+    private static readonly string ConfigurationFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"IR Server\IR Server.xml");
 
     public static bool AbstractRemoteMode { get; set; }
     public static IRServerMode Mode { get; set; }

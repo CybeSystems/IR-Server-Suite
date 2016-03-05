@@ -28,14 +28,14 @@ namespace Commands
     /// "IR Commands" folder location (includes trailing '\')
     /// </summary>
     public static readonly string FolderIRCommands =
-      Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) +
+      AppDomain.CurrentDomain.BaseDirectory +
       "\\IR Server Suite\\IR Commands\\";
 
     /// <summary>
     /// "Set Top Boxes" folder location (includes trailing '\')
     /// </summary>
     public static readonly string FolderSTB =
-      Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) +
+      AppDomain.CurrentDomain.BaseDirectory +
       "\\IR Server Suite\\Set Top Boxes\\";
     */
 

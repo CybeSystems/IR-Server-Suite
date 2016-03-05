@@ -96,7 +96,7 @@ namespace IrssUtils
       if (String.IsNullOrEmpty(fileName))
         throw new ArgumentNullException("fileName");
 
-      string path = Path.Combine(Common.FolderAppData, fileName + Common.FileExtensionVariableList);
+      string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName + Common.FileExtensionVariableList);
 
       using (XmlTextWriter writer = new XmlTextWriter(path, Encoding.UTF8))
       {
@@ -122,7 +122,7 @@ namespace IrssUtils
       if (String.IsNullOrEmpty(fileName))
         throw new ArgumentNullException("fileName");
 
-      string path = Path.Combine(Common.FolderAppData, fileName + Common.FileExtensionVariableList);
+      string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName + Common.FileExtensionVariableList);
 
       XmlDocument doc = new XmlDocument();
       doc.Load(path);

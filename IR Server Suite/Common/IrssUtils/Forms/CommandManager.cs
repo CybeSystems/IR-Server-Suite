@@ -29,8 +29,8 @@ namespace IrssUtils.Forms
         private BlastIrDelegate _BlastFunc;
         private LearnIrDelegate _LearnIrFunc;
         private ProcessCommandDelegate _ProcessCommand;
-        internal static readonly string FolderMacros = Path.Combine(Common.FolderAppData, "Translator\\Macro");
-        internal static readonly string FolderBlaster = Path.Combine(Common.FolderAppData, "IR Commands");
+        internal static readonly string FolderMacros = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Translator\\Macro");
+        internal static readonly string FolderBlaster = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "IR Commands");
         private List<TreeNode> _editableGroups = new List<TreeNode>();
 
         #endregion Attributes

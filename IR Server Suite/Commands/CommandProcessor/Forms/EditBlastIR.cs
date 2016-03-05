@@ -107,8 +107,8 @@ namespace Commands
       string displayName = Path.Combine(filePath, fileName);
       if (displayName.StartsWith(Common.FolderIRCommands, StringComparison.OrdinalIgnoreCase))
         displayName = displayName.Substring(Common.FolderIRCommands.Length);
-      else if (displayName.StartsWith(Common.FolderAppData, StringComparison.OrdinalIgnoreCase))
-        displayName = displayName.Substring(Common.FolderAppData.Length);
+      else if (displayName.StartsWith(AppDomain.CurrentDomain.BaseDirectory, StringComparison.OrdinalIgnoreCase))
+        displayName = displayName.Substring(AppDomain.CurrentDomain.BaseDirectory.Length);
 
       labelIRCommandFile.Text = displayName;
 

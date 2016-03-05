@@ -115,10 +115,10 @@ namespace Abstractor
       "Page Down"
     };*/
 
-    private static readonly string AbstractRemoteMapFolder = Path.Combine(Common.FolderAppData,
+    private static readonly string AbstractRemoteMapFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                                                           "IR Server\\Abstract Remote Maps");
 
-    private static readonly string AbstractRemoteSchemaFile = Path.Combine(Common.FolderAppData,
+    private static readonly string AbstractRemoteSchemaFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                                                            "IR Server\\Abstract Remote Maps\\RemoteTable.xsd");
 
     #endregion Constants

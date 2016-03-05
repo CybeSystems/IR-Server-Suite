@@ -41,7 +41,7 @@ namespace SkinEditor
   {
     #region Constants
 
-    private static readonly string ConfigurationFolder = Path.Combine(Common.FolderAppData,
+    private static readonly string ConfigurationFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                                                     "Virtual Remote");
     private static readonly string ConfigurationFile = Path.Combine(ConfigurationFolder,
                                                                     "Virtual Remote Skin Editor.xml");

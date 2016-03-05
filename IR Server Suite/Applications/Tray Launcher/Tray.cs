@@ -45,7 +45,7 @@ namespace TrayLauncher
 
     private const string ProcessCommandThreadName = "ProcessCommand";
 
-    private static readonly string ConfigurationDir = Path.Combine(Common.FolderAppData,
+    private static readonly string ConfigurationDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                                                                    "Tray Launcher");
 
     private static readonly string ConfigurationFile = Path.Combine(ConfigurationDir,
